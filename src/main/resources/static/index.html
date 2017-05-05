@@ -3,7 +3,7 @@
 <head>
 
     <meta charset="utf-8">
-    <title>WebSocket Test</title>
+    <title>Random Chat</title>
 
     <script src="jquery-1.10.2.min.js"></script>
 
@@ -14,7 +14,7 @@
 </head>
 
 <body>
-<h2>WebSocket Test</h2>
+<h2>Random Chatting Application</h2>
 <div class="logwrapper" style="top: 89px; margin-right: 168px;">
     <div class="logbox">
         <div style="position: relative; min-height: 100%;" id="output">
@@ -29,9 +29,7 @@
         <tr>
             <td style="vertical-align: inherit;display: table-cell;">
                 <div class="disconnectbtnwrapper newbtn" id="start_or_stop_wrapper">
-                    <button class="disconnectbtn" id="new_button">
-                        New
-                    </button>
+                    <button class="disconnectbtn" id="new_button">New<div class="btnkbshortcut">Esc</div></button>
                 </div>
             </td>
 
@@ -43,9 +41,7 @@
 
             <td class="sendbthcell">
                 <div class="sendbtnwrapper">
-                    <button id="send" class="sendbtn">
-                        Send
-                    </button>
+                    <button id="send" class="sendbtn">Send<div class="btnkbshortcut">Enter</div></button>
                 </div>
             </td>
 

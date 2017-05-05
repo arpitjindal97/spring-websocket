@@ -13,15 +13,15 @@ public class WebSocketConfig implements WebSocketConfigurer
 	@Override
 	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) 
 	{
-		MarcoHandler handler =  marcoHandler();
+		SessionHandler handler =  sessionHandler();
 		handler.setConnection();
-		registry.addHandler(marcoHandler(), "/marco");
+		registry.addHandler(sessionHandler(), "/chat");
 	}
 
 	@Bean
-	public MarcoHandler marcoHandler() 
+	public SessionHandler sessionHandler()
 	{
-		return new MarcoHandler();
+		return new SessionHandler();
 	}
 
 }

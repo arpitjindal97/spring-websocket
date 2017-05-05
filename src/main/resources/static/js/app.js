@@ -1,8 +1,8 @@
 /**
  * Created by arpit on 2/5/17.
  */
-var wsUri = "ws://localhost:8080/marco";
-var output;
+var wsUri = "ws://localhost:8080/chat";
+var key;
 
 function testWebSocket()
 {
@@ -15,14 +15,13 @@ function testWebSocket()
 
 function onOpen(evt)
 {
-    //writeToScreen("CONNECTED");
     document.getElementById("new_button").innerHTML="Stop";
     $("[id='start_or_stop_wrapper']").attr('class', "disconnectbtnwrapper");
 }
 
 function onClose(evt)
 {
-    //writeToScreen("<p class='statuslog'>Stranger has Disconnected</p>");
+    disconnected();
 }
 
 function onMessage(evt)
@@ -36,6 +35,14 @@ function onMessage(evt)
         {
             disableInputArea();
         }
+        else if(new String(str) == "key is 0")
+        {
+            key=0;
+        }
+        else if(new String(str) == "key is 1")
+        {
+            key=1;
+        }
         else if(new String(str) == "textarea enabled")
         {
             enableInputArea();
@@ -43,6 +50,10 @@ function onMessage(evt)
         else if(new String(str) == "disconnected")
         {
             disconnected();
+        }
+        else if(new String(str) == "didt found")
+        {
+            setTimeout(give_me_stranger, 500);
         }
     }
     else
@@ -54,10 +65,6 @@ function onError(evt)
     writeToScreen('<span style="color: red;">ERROR:</span> ' + evt.data);
 }
 
-function doSend(message)
-{
-    websocket.send(message);
-}
 
 function writeToScreen(message)
 {
@@ -81,6 +88,11 @@ $(document).ready(function()
             }
             return false;
         }
+        /*else if(evt.keyCode == 27)
+        {
+            escape_button_pressed();
+            return false;
+        }*/
         else
         {
             return true;
@@ -89,3 +101,15 @@ $(document).ready(function()
 
 });
 
+document.onkeydown = function(evt) {
+    evt = evt || window.event;
+    var isEscape = false;
+    if ("key" in evt) {
+        isEscape = (evt.key == "Escape" || evt.key == "Esc");
+    } else {
+        isEscape = (evt.keyCode == 27);
+    }
+    if (isEscape) {
+        escape_button_pressed();
+    }
+};

@@ -1,9 +1,3 @@
-/*var va=new Element("td",{"class":"sendbthcell"}),
-    wa=new Element("div",{"class":"sendbtnwrapper"}),
-    xa=new Element("button",{"class":"sendbtn",disabled:!0,text:"Send"});
-
-var input = new Element("textarea",{"class":"chatmsg"});
-*/
 
 $(function ()
 {
@@ -43,6 +37,7 @@ function enableInputArea()
 {
     $("[id='input']").attr('disabled', false);
     $("[id='send']").attr('disabled', false);
+    $("[id='input']").focus();
 };
 function disconnected()
 {
@@ -50,4 +45,12 @@ function disconnected()
     document.getElementById("new_button").innerHTML="New";
     $("[id='start_or_stop_wrapper']").attr('class', "disconnectbtnwrapper newbtn");
 
+}
+function give_me_stranger()
+{
+    websocket.send("give_me_stranger "+key);
+}
+function escape_button_pressed()
+{
+    document.getElementById("new_button").click();
 }
