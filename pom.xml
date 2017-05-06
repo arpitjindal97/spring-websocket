@@ -55,6 +55,12 @@
             <artifactId>mongodb-driver</artifactId>
             <version>3.4.2</version>
         </dependency>
+
+        <dependency>
+            <groupId>com.hazelcast</groupId>
+            <artifactId>hazelcast</artifactId>
+            <!-- Version is managed by Spring Boot starter -->
+        </dependency>
     </dependencies>
 
     <properties>

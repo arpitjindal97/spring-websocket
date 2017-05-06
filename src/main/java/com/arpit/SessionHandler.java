@@ -19,7 +19,7 @@ import java.util.Map;
 import static com.mongodb.client.model.Filters.*;
 import static com.mongodb.client.model.Updates.set;
 
-@Component
+
 public class SessionHandler extends TextWebSocketHandler {
     private static final Logger logger = LoggerFactory.getLogger(SessionHandler.class);
 

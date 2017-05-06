@@ -28,6 +28,7 @@ function onMessage(evt)
 {
     var str = evt.data;
     var index = str.indexOf("server: ");
+
     if(index == 0)
     {
         str = str.substring(8,str.length);
@@ -68,7 +69,9 @@ function onError(evt)
 
 function writeToScreen(message)
 {
-    $("#output").append("<div class='logitem'>"+message+"</div>")
+    $("#output").append("<div class='logitem'>"+message+"</div>");
+
+    $("#logbox").scrollTop($("#logbox")[0].scrollHeight);
 }
 
 $(document).ready(function()
@@ -88,11 +91,6 @@ $(document).ready(function()
             }
             return false;
         }
-        /*else if(evt.keyCode == 27)
-        {
-            escape_button_pressed();
-            return false;
-        }*/
         else
         {
             return true;

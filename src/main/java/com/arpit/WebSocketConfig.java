@@ -1,5 +1,8 @@
 package com.arpit;
 
+import com.hazelcast.config.Config;
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
+import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
@@ -11,17 +14,18 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class WebSocketConfig implements WebSocketConfigurer 
 {
 	@Override
-	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) 
+	public void registerWebSocketHandlers(WebSocketHandlerRegistry registry)
 	{
-		SessionHandler handler =  sessionHandler();
-		handler.setConnection();
 		registry.addHandler(sessionHandler(), "/chat");
 	}
 
 	@Bean
-	public SessionHandler sessionHandler()
+	public NewSessionHandler sessionHandler()
 	{
-		return new SessionHandler();
+        NewSessionHandler handler = new NewSessionHandler();
+        handler.setConnection();
+        return handler;
 	}
+
 
 }
