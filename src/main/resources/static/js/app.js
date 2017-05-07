@@ -1,7 +1,7 @@
 /**
  * Created by arpit on 2/5/17.
  */
-var wsUri = "ws://localhost:8080/chat";
+var wsUri = "ws://"+window.location.hostname+":80/chat";
 var key;
 
 function testWebSocket()
