@@ -17,11 +17,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 import static com.mongodb.client.model.Filters.*;
-import static com.mongodb.client.model.Updates.set;
+import static com.mongodb.client.model.Updates.*;
 
 
 public class SessionHandler extends TextWebSocketHandler {
-    private static final Logger logger = LoggerFactory.getLogger(SessionHandler.class);
+    private final Logger logger = LoggerFactory.getLogger(SessionHandler.class);
 
     public MongoClient mongoClient = null;
     MongoDatabase db;
