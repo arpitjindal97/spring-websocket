@@ -1,7 +1,10 @@
 /**
  * Created by arpit on 2/5/17.
  */
-var wsUri = "ws://"+window.location.hostname+":80/chat";
+var wsUri = ((new String(location.protocol)=="https:")?"wss":"ws")+
+            "://"+location.hostname+":"+
+            ((new String(location.protocol)=="https:")?"443":location.port)+
+            "/chat";
 var key;
 
 function testWebSocket()

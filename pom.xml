@@ -94,6 +94,9 @@
     <profiles>
         <profile>
             <id>openshift</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
             <build>
                 <finalName>ROOT</finalName>
                 <plugins>
