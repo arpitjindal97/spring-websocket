@@ -89,6 +89,8 @@ public class NewSessionHandler extends TextWebSocketHandler {
         for(Map.Entry entry: alternate.entrySet()) {
             String key = entry.getValue().toString();
 
+            session.sendMessage(new TextMessage("server: key is " + key));
+
             if (key.equals("0")) {
 
                 //make it one
@@ -106,7 +108,6 @@ public class NewSessionHandler extends TextWebSocketHandler {
             }
 
             //ask client for search_stranger request
-            session.sendMessage(new TextMessage("server: key is " + key));
             session.sendMessage(new TextMessage("server: didt found"));
             return;
         }
@@ -118,7 +119,7 @@ public class NewSessionHandler extends TextWebSocketHandler {
         try {
             String id = session.getId();
             //logger.info("Connection closed ID: " + id);
-            map.remove(session.getId());
+            map.remove(id);
 
 
             //Map<String,String> alternate = hzInstance.getMap("mappings");
@@ -129,13 +130,13 @@ public class NewSessionHandler extends TextWebSocketHandler {
                 if(entry.getKey().equals(id) )
                 {
                     stranger_id = entry.getValue().toString();
-                    mappings.remove(entry);
+                    mappings.remove(id);
                     break;
                 }
                 if(entry.getValue().equals(id))
                 {
                     stranger_id = entry.getKey().toString();
-                    mappings.remove(entry);
+                    mappings.remove(id);
                     break;
                 }
             }
